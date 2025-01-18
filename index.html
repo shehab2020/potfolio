@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shehab Selim Portfolio</title>
+    <style>
+      body {
+        font-family: "Cairo", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #121212;
+        color: #fff;
+      }
+      nav {
+        display: flex;
+        justify-content: space-around;
+        background-color: #1a1a1a;
+        padding: 10px 0;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      nav a.active {
+        background: none;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-image: linear-gradient(45deg, navy, purple);
+      }
+      nav a:hover {
+        text-decoration: none;
+      }
+      .tab {
+        display: none;
+        padding: 20px;
+        animation: fadeIn 0.5s;
+      }
+      .active {
+        display: block;
+        animation: dropDown 0.5s ease-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes dropDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20%);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .home .first-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+      }
+      .home .first-section h1 {
+        font-size: 3rem;
+        text-align: center;
+      }
+      .home .first-section div {
+        text-align: center;
+      }
+      .home .second-section {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+      .experience-square {
+        background-color: #2b2b2b;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 10px;
+        color: #fff;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .home .second-section > div {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      img {
+        max-width: 100%;
+        border-radius: 10px;
+      }
+      img.profile {
+        border-radius: 50%;
+        width: 400px;
+        height: 400px;
+      }
+      img.work {
+        width: 400px;
+        height: 200px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 20px auto 50px auto;
+        max-width: 400px;
+      }
+      input,
+      textarea,
+      button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        font-family: "Cairo", sans-serif;
+      }
+      button {
+        background: linear-gradient(45deg, navy, purple);
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      button:hover {
+        background: linear-gradient(45deg, purple, navy);
+      }
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #1a1a1a;
+      }
+      footer ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+      footer li {
+        display: inline;
+      }
+      footer a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .home section:nth-child(3) {
+        text-align: center;
+      }
+      .home section:nth-child(4) h3,
+      #contact-me section h3 {
+        text-align: center;
+        font-size: 2.5rem;
+      }
+      #my-work h1 {
+        text-align: center;
+        font-size: 2.5rem;
+      }
+      @media (max-width: 810px) {
+        .home .first-section img {
+          width: 300px;
+          height: 300px;
+        }
+      }
+      @media (max-width: 768px) {
+        .home .first-section {
+          flex-direction: column;
+          text-align: center;
+        }
+        .home .first-section img {
+          margin-bottom: 20px;
+          width: 250px;
+          height: 250px;
+        }
+        .home .second-section > div {
+          flex-wrap: wrap;
+        }
+        .experience-square {
+          width: 45%;
+          margin: 10px auto;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <a href="#" data-tab="home" class="active">Home</a>
+      <a href="#" data-tab="my-work">My Work</a>
+      <a href="#" data-tab="contact-me">Contact Me</a>
+    </nav>
+
+    <div id="home" class="tab active home">
+      <section class="first-section">
+        <img src="pic.jpg" alt="Shehab Selim" class="profile" />
+        <div>
+          <h1>Shehab Selim</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            vitae eros eget tellus tristique bibendum.
+          </p>
+        </div>
+      </section>
+
+      <section class="second-section">
+        <h3>My Experience</h3>
+        <div>
+          <div class="experience-square">HTML</div>
+          <div class="experience-square">CSS</div>
+          <div class="experience-square">JavaScript</div>
+          <div class="experience-square">Figma</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>My Work</h3>
+        <div>
+          <img src="pic1.png" alt="Work 1" class="work" />
+          <img src="pic2.png" alt="Work 2" class="work" />
+          <img src="pic3.png" alt="Work 3" class="work" />
+        </div>
+        <button data-tab="my-work">My Work</button>
+      </section>
+
+      <section>
+        <h3>Contact Me</h3>
+        <form
+          action="mailto:shehabatia123@gmail.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <input type="email" placeholder="Email" required />
+          <textarea placeholder="Work message" required></textarea>
+          <input type="tel" placeholder="Phone Number" required />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </div>
+
+    <div id="my-work" class="tab">
+      <section>
+        <h1>My Work</h1>
+      </section>
+      <section>
+        <img src="pic1.png" alt="Work 1" class="work" />
+        <img src="pic2.png" alt="Work 2" class="work" />
+        <img src="pic3.png" alt="Work 3" class="work" />
+      </section>
+    </div>
+
+    <div id="contact-me" class="tab">
+      <section>
+        <h3>Contact Me</h3>
+        <form
+          action="mailto:shehabatia123@gmail.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <input type="email" placeholder="Email" required />
+          <textarea placeholder="Work message" required></textarea>
+          <input type="tel" placeholder="Phone Number" required />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </div>
+
+    <footer>
+      <ul>
+        <li><a href="#" data-tab="home">Home</a></li>
+        <li><a href="#" data-tab="my-work">My Work</a></li>
+        <li><a href="#" data-tab="contact-me">Contact Me</a></li>
+      </ul>
+      <p>&copy; 2025 Shehab Selim. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const tabs = document.querySelectorAll("[data-tab]");
+      const tabContents = document.querySelectorAll(".tab");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", (e) => {
+          e.preventDefault();
+          const target = tab.dataset.tab;
+
+          tabs.forEach((t) => t.classList.remove("active"));
+          tabContents.forEach((content) => {
+            content.classList.remove("active");
+          });
+
+          tab.classList.add("active");
+          document.getElementById(target).classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
