@@ -12,12 +12,23 @@
         box-sizing: border-box;
         background-color: #121212;
         color: #fff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1;
       }
       nav {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        align-items: center;
         background-color: #1a1a1a;
-        padding: 10px 0;
+        padding: 10px 5%;
+      }
+      nav img {
+        width: 50px;
+        height: 50px;
       }
       nav a {
         color: #fff;
@@ -28,48 +39,32 @@
       }
       nav a.active {
         background: none;
-        background-clip: text;
+        background: linear-gradient(45deg, #f5d378, #f5d378);
         -webkit-background-clip: text;
-        color: transparent;
-        background-image: linear-gradient(45deg, navy, purple);
+        -webkit-text-fill-color: transparent;
       }
       nav a:hover {
         text-decoration: none;
       }
+      h3 {
+        font-size: 25px;
+        text-align: center;
+      }
       .tab {
         display: none;
         padding: 20px;
-        animation: fadeIn 0.5s;
       }
       .active {
         display: block;
-        animation: dropDown 0.5s ease-out;
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      @keyframes dropDown {
-        from {
-          opacity: 0;
-          transform: translateY(-20%);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
       .home .first-section {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         padding: 20px;
       }
       .home .first-section h1 {
+        margin-top: 0 !important;
         font-size: 3rem;
         text-align: center;
       }
@@ -84,25 +79,37 @@
       }
       .experience-square {
         background-color: #2b2b2b;
-        margin: 10px;
+        margin: 5px 10px;
         padding: 20px;
         border-radius: 10px;
         color: #fff;
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
+      }
+      .experience-square img {
+        height: 85px;
+        width: 85px;
       }
       .home .second-section > div {
+        width: 80%;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         gap: 10px;
         flex-wrap: wrap;
       }
+      .home.work-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
       img {
         max-width: 100%;
-        border-radius: 10px;
+        border-radius: 8px;
+        margin: 5px 10px;
       }
       img.profile {
         border-radius: 50%;
@@ -125,22 +132,24 @@
       button {
         padding: 10px;
         border-radius: 5px;
-        border: none;
+        border: 1px solid #f5d378;
         font-family: "Cairo", sans-serif;
+        background: transparent;
+        color: #f5d378;
       }
       button {
-        background: linear-gradient(45deg, navy, purple);
-        color: #fff;
         cursor: pointer;
         font-weight: bold;
       }
       button:hover {
-        background: linear-gradient(45deg, purple, navy);
+        background-color: #f5d378;
+        color: #121212;
       }
       footer {
         text-align: center;
         padding: 10px;
         background-color: #1a1a1a;
+        margin-top: auto;
       }
       footer ul {
         list-style: none;
@@ -152,6 +161,9 @@
       footer li {
         display: inline;
       }
+      footer li a:hover {
+        color: #f5d378;
+      }
       footer a {
         color: #fff;
         text-decoration: none;
@@ -159,19 +171,24 @@
       .home section:nth-child(3) {
         text-align: center;
       }
-      .home section:nth-child(4) h3,
-      #contact-me section h3 {
-        text-align: center;
-        font-size: 2.5rem;
+      .home section {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s forwards;
       }
-      #my-work h1 {
-        text-align: center;
-        font-size: 2.5rem;
+      .home section:nth-child(2) {
+        animation-delay: 0.4s;
       }
-      @media (max-width: 810px) {
-        .home .first-section img {
-          width: 300px;
-          height: 300px;
+      .home section:nth-child(3) {
+        animation-delay: 0.8s;
+      }
+      .home section:nth-child(4) {
+        animation-delay: 1.2s;
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
       @media (max-width: 768px) {
@@ -188,8 +205,17 @@
           flex-wrap: wrap;
         }
         .experience-square {
+          display: flex;
+          flex-wrap: wrap;
+          overflow: hidden;
           width: 45%;
           margin: 10px auto;
+        }
+      }
+      @media (min-width: 810px) and (max-width: 1080px) {
+        .home .first-section img.profile {
+          width: 300px;
+          height: 300px;
         }
       }
     </style>
@@ -199,85 +225,102 @@
     />
   </head>
   <body>
-    <nav>
-      <a href="#" data-tab="home" class="active">Home</a>
-      <a href="#" data-tab="my-work">My Work</a>
-      <a href="#" data-tab="contact-me">Contact Me</a>
-    </nav>
+    <main>
+      <nav>
+        <a href="#" data-tab="home" class="active"
+          ><img src="logo.png" alt="Logo"
+        /></a>
+        <a href="#" data-tab="home" class="active">Home</a>
+        <a href="#" data-tab="my-work">My Work</a>
+        <a href="#" data-tab="contact-me">Contact Me</a>
+      </nav>
 
-    <div id="home" class="tab active home">
-      <section class="first-section">
-        <img src="pic.jpg" alt="Shehab Selim" class="profile" />
-        <div>
-          <h1>Shehab Selim</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            vitae eros eget tellus tristique bibendum.
-          </p>
-        </div>
-      </section>
+      <div id="home" class="tab active home">
+        <section class="first-section">
+          <img src="pic.jpg" alt="Shehab Selim" class="profile" />
+          <div>
+            <h1>Shehab Selim</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
+              Praesent vitae eros eget tellus tristique bibendum.
+            </p>
+          </div>
+        </section>
 
-      <section class="second-section">
-        <h3>My Experience</h3>
-        <div>
-          <div class="experience-square">HTML</div>
-          <div class="experience-square">CSS</div>
-          <div class="experience-square">JavaScript</div>
-          <div class="experience-square">Figma</div>
-        </div>
-      </section>
+        <section class="second-section">
+          <h3>My Experience</h3>
+          <div>
+            <div class="experience-square">
+              <img src="exp1.png" alt="html" class="Experience" />
+              HTML
+            </div>
+            <div class="experience-square">
+              <img src="exp2.png" alt="css" class="Experience" />
+              CSS
+            </div>
+            <div class="experience-square">
+              <img src="exp3.png" alt="js" class="Experience" />
+              JS
+            </div>
+            <div class="experience-square">
+              <img src="exp4.png" alt="figma" class="Experience" />
+              Figma
+            </div>
+          </div>
+        </section>
 
-      <section>
-        <h3>My Work</h3>
-        <div>
+        <section>
+          <h3>My Work</h3>
+          <div class="work-section">
+            <img src="pic1.png" alt="Work 1" class="work" />
+            <img src="pic2.png" alt="Work 2" class="work" />
+            <img src="pic3.png" alt="Work 3" class="work" />
+          </div>
+          <button data-tab="my-work">My Work</button>
+        </section>
+
+        <section>
+          <h3>Contact Me</h3>
+          <form
+            action="mailto:shehabatia123@gmail.com"
+            method="post"
+            enctype="text/plain"
+          >
+            <input type="email" placeholder="Email" required />
+            <textarea placeholder="Work message" required></textarea>
+            <input type="tel" placeholder="Phone Number" required />
+            <button type="submit">Send</button>
+          </form>
+        </section>
+      </div>
+
+      <div id="my-work" class="tab">
+        <section>
+          <h3>My Work</h3>
+        </section>
+        <section>
           <img src="pic1.png" alt="Work 1" class="work" />
           <img src="pic2.png" alt="Work 2" class="work" />
           <img src="pic3.png" alt="Work 3" class="work" />
-        </div>
-        <button data-tab="my-work">My Work</button>
-      </section>
+        </section>
+      </div>
 
-      <section>
-        <h3>Contact Me</h3>
-        <form
-          action="mailto:shehabatia123@gmail.com"
-          method="post"
-          enctype="text/plain"
-        >
-          <input type="email" placeholder="Email" required />
-          <textarea placeholder="Work message" required></textarea>
-          <input type="tel" placeholder="Phone Number" required />
-          <button type="submit">Send</button>
-        </form>
-      </section>
-    </div>
-
-    <div id="my-work" class="tab">
-      <section>
-        <h1>My Work</h1>
-      </section>
-      <section>
-        <img src="pic1.png" alt="Work 1" class="work" />
-        <img src="pic2.png" alt="Work 2" class="work" />
-        <img src="pic3.png" alt="Work 3" class="work" />
-      </section>
-    </div>
-
-    <div id="contact-me" class="tab">
-      <section>
-        <h3>Contact Me</h3>
-        <form
-          action="mailto:shehabatia123@gmail.com"
-          method="post"
-          enctype="text/plain"
-        >
-          <input type="email" placeholder="Email" required />
-          <textarea placeholder="Work message" required></textarea>
-          <input type="tel" placeholder="Phone Number" required />
-          <button type="submit">Send</button>
-        </form>
-      </section>
-    </div>
+      <div id="contact-me" class="tab">
+        <section>
+          <h3>Contact Me</h3>
+          <form
+            action="mailto:shehabatia123@gmail.com"
+            method="post"
+            enctype="text/plain"
+          >
+            <input type="email" placeholder="Email" required />
+            <textarea placeholder="Work message" required></textarea>
+            <input type="tel" placeholder="Phone Number" required />
+            <button type="submit">Send</button>
+          </form>
+        </section>
+      </div>
+    </main>
 
     <footer>
       <ul>
@@ -285,6 +328,8 @@
         <li><a href="#" data-tab="my-work">My Work</a></li>
         <li><a href="#" data-tab="contact-me">Contact Me</a></li>
       </ul>
+      <p>shehabatia123@gmail.com</p>
+      <p>+201093960923</p>
       <p>&copy; 2025 Shehab Selim. All rights reserved.</p>
     </footer>
 
